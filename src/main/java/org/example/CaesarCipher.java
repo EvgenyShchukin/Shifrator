@@ -3,7 +3,7 @@ package org.example;
 public class CaesarCipher {
     private static final String alphabet = "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" + "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
-            ".,\":!? +-*/\\@#$%^&(){}[];'|`~=_©«»—" + "0123456789";
+            ".,\":!? +-*/\\@#$%^&(){}[];'|`~=_©«»—" + "0123456789" + (char)10 + (char)13;
 
     public String encrypt(String message, int key) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -27,5 +27,9 @@ public class CaesarCipher {
 
     public String decrypt(String message, int key) {
         return encrypt(message, key * -1);
+    }
+
+    public int alphabetLength () {
+        return  alphabet.length();
     }
 }

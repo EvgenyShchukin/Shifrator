@@ -18,10 +18,10 @@ public class Menu {
             String answer = input.nextLine();
 
             switch (answer) {
-                case "1" -> new Encrypted().encrypted();
-                case "2" -> new Decrypted().decrypted();
-                case "3" -> System.out.println("action3");
-                case "4" -> System.out.println("action4");
+                case "1" -> new EncryptedDecrypted().encryptedDecrypted(true);
+                case "2" -> new EncryptedDecrypted().encryptedDecrypted(false);
+                case "3" -> new Bruteforce().bruteforce();
+                case "4" -> new Parsing().parsing();
                 case "5" -> {
                     return;
                 }

@@ -15,17 +15,27 @@ public class ConsoleHelper {
     public static void writeMessage(String message) {
         System.out.println(message);
     }
+
     @SneakyThrows
-    public static String readString () {
+    public static String readString() {
         return console.readLine();
     }
-    public static int readInt  () {
+
+    public static int readInt() {
         return Integer.parseInt(readString());
     }
 
-    public static Path buildFileName (String path, String suffix) {
+    public static Path buildFileName(String path, String suffix) {
+        Path fullPath = Path.of(path);
+        String fileName = fullPath.getFileName().toString();
+        String newFileName = "";
+        if (fileName.contains(".")) {
+            int index = fileName.indexOf(".");
+            newFileName = fileName.substring(0, index) + suffix + fileName.substring(index);
+        } else {
+            newFileName = fileName + suffix;
+        }
 
-        //Написать билдер наименования файла с расширением или без
-        return Path.of("");
+        return fullPath.getParent().resolve(newFileName);
     }
 }
